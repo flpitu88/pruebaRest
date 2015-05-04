@@ -5,9 +5,11 @@
  */
 package config;
 
-import com.technicalrex.webapp.pegger.greetings.Greetings;
+import greetings.Greetings;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
+
+
  
 public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
