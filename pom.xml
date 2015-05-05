@@ -15,12 +15,11 @@
         <jersey.version>2.11</jersey.version>
         <jackson.version>2.4.4</jackson.version>
     </properties>
+    
+<!--    <prerequisites>
+      <maven>3.1.0</maven>
+    </prerequisites>-->
 
-    <prerequisites>
-        <maven>3.1.0</maven>
-    </prerequisites>
-    
-    
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -89,7 +88,7 @@
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-1.0-sdk</artifactId>
-            <version>1.9.10</version>
+            <version>1.9.4</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -116,7 +115,7 @@
         <dependency>
             <groupId>org.glassfish.jersey.ext</groupId>
             <artifactId>jersey-spring3</artifactId>
-            <!--<version>${jersey.version}</version>-->
+<!--            <version>${jersey.version}</version>-->
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
@@ -151,13 +150,13 @@
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-testing</artifactId>
-            <version>1.9.10</version>
+            <version>1.9.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-stubs</artifactId>
-            <version>1.9.10</version>
+            <version>1.9.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -168,12 +167,12 @@
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-client</artifactId>
-            <version>2.5.1</version>
+            <!--<version>${jersey.version}</version>-->
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-moxy</artifactId>
-            <version>2.5.1</version>
+            <!--<version>${jersey.version}</version>-->
         </dependency>
     </dependencies>
 
@@ -225,7 +224,7 @@
             <plugin>
                 <groupId>com.google.appengine</groupId>
                 <artifactId>appengine-maven-plugin</artifactId>
-                <version>1.9.10</version>
+                <version>1.9.4</version>
                 <configuration>
                     <enableJarClasses>false</enableJarClasses>
                     <!-- Comment in the below snippet to bind to all IPs instead of just localhost -->
