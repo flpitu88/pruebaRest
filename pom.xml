@@ -16,9 +16,9 @@
         <jackson.version>2.4.4</jackson.version>
     </properties>
     
-<!--    <prerequisites>
+    <prerequisites>
       <maven>3.1.0</maven>
-    </prerequisites>-->
+    </prerequisites>
 
     <dependencyManagement>
         <dependencies>
@@ -115,7 +115,7 @@
         <dependency>
             <groupId>org.glassfish.jersey.ext</groupId>
             <artifactId>jersey-spring3</artifactId>
-<!--            <version>${jersey.version}</version>-->
+            <!--            <version>${jersey.version}</version>-->
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
@@ -236,6 +236,11 @@
                       <jvmFlag>-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n</jvmFlag>
                     </jvmFlags -->
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.5</version>
             </plugin>
         </plugins>
     </build>
