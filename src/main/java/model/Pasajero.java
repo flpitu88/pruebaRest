@@ -2,9 +2,10 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.io.Serializable;
 import java.util.List;
 
-public class Pasajero {
+public class Pasajero implements Serializable {
     
         private static int contadorId = 0;
 	
