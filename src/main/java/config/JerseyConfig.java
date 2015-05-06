@@ -5,19 +5,22 @@
  */
 package config;
 
-import greetings.GreetingService;
-import greetings.Greetings;
+import resources.Greetings;
+import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
+import resources.PasajeroResource;
 
 public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig() {
+        
         // Enable Spring DI and Jackson configuration
         register(RequestContextFilter.class);
-        register(JacksonObjectMapperConfig.class);
+        register(JacksonFeature.class);
         // Application resources
         register(Greetings.class);
-        register(GreetingService.class);
+        register(PasajeroResource.class);
+        
     }
 }

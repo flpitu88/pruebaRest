@@ -3,18 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package greetings;
+package services;
 
+import greetings.Greeting;
 import org.springframework.stereotype.Service;
- 
+
 import java.util.Arrays;
- 
+import java.util.List;
+
 @Service
 public class GreetingService {
-    public Iterable<Greeting> getEnglishGreetings() {
+
+    public List<Greeting> getEnglishGreetings() {
         return Arrays.asList(
-            new Greeting("Hi"),
-            new Greeting("Hello"),
-            new Greeting("Yo"));
+                new Greeting("Hi"),
+                new Greeting("Hello"),
+                new Greeting("Yo"));
     }
 }

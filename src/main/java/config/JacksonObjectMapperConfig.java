@@ -16,7 +16,7 @@ public class JacksonObjectMapperConfig
         implements ContextResolver<ObjectMapper> {
  
     private static final ObjectMapper OBJECT_MAPPER
-        = new ObjectMapper()
+        = new ObjectMapper()               
         .disable(MapperFeature.AUTO_DETECT_CREATORS)
         .disable(MapperFeature.CAN_OVERRIDE_ACCESS_MODIFIERS);
  

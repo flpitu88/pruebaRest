@@ -5,17 +5,26 @@
  */
 package greetings;
 
-import com.fasterxml.jackson.annotation.JsonValue;
- 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Greeting {
-    private final String text;
- 
+
+    @JsonProperty("text")
+    private String text;
+
+    public Greeting() {
+    }
+
     public Greeting(String text) {
         this.text = text;
     }
- 
-    @JsonValue
+
     public String getText() {
         return text;
     }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
 }
