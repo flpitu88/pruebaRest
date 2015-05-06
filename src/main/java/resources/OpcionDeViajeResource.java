@@ -33,8 +33,6 @@ public class OpcionDeViajeResource {
     }
 
     @GET
-    @Produces("application/json")
-    // Ejemplo: http://localhost:8080/opcionDeViaje?aeroOrigen=MIA&aeroDestino=BUE&fechaIda=11/11/2015&fechaVuelta=11/12/2015
     public List<OpcionDeViaje> findOpcionesDeViaje(
             @QueryParam("aeroOrigen") String aeroOrigen, // iata code refactor
             @QueryParam("aeroDestino") String aeroDestino, // iata code refactor

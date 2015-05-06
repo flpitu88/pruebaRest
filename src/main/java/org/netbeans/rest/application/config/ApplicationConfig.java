@@ -31,6 +31,7 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(config.JacksonObjectMapperConfig.class);
         resources.add(resources.AmigosResource.class);
+        resources.add(resources.CiudadesResource.class);
         resources.add(resources.Greetings.class);
         resources.add(resources.OpcionDeViajeResource.class);
         resources.add(resources.PasajeroResource.class);

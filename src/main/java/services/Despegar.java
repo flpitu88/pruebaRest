@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Despegar implements OpcionViajeAPI {
-
+    
     private static final String TARGET
             = "https://api.despegar.com/v3/flights/itineraries";
 
@@ -56,10 +56,13 @@ public class Despegar implements OpcionViajeAPI {
         Response response = invocationBuilder.get();
 
         if (response.getStatus() == 200) {
+
             opcionesDeViaje = response.readEntity(OpcionesDeViaje.class);
+
         }
 
         return opcionesDeViaje.getItems();
+
     }
 
 }

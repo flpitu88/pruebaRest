@@ -10,6 +10,7 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
 import resources.AmigosResource;
+import resources.CiudadesResource;
 import resources.OpcionDeViajeResource;
 import resources.PasajeroResource;
 
@@ -25,5 +26,6 @@ public class JerseyConfig extends ResourceConfig {
         register(PasajeroResource.class);
         register(AmigosResource.class);
         register(OpcionDeViajeResource.class);
+        register(CiudadesResource.class);
     }
 }
