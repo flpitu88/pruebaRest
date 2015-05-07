@@ -21,4 +21,6 @@ public interface PasajerosAPI {
     
     public List<Pasajero> getAmigosDePasajero(int id);
     
+    public Pasajero getPasajeroPorId(int id);
+    
 }

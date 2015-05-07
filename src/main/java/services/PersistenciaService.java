@@ -56,4 +56,9 @@ public class PersistenciaService implements PasajerosAPI, ViajesAPI {
         viajeDao.guardarViaje(v);
     }
 
+    @Override
+    public Pasajero getPasajeroPorId(int id) {
+        return psjDao.getPasajeroById(id);
+    }
+
 }

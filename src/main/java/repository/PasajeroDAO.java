@@ -22,6 +22,8 @@ public interface PasajeroDAO {
     
     public List<Pasajero> getAmigos(int id);
     
+    public List<Integer> getIdsAmigos(int id);
+    
 //    public List<Recomendacion> getRecomendacionesDeUsuario(Pasajero p);
     
 }

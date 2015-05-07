@@ -16,7 +16,9 @@ import javax.ws.rs.core.Response;
 import model.Pasajero;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.jackson.JacksonFeature;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -25,18 +27,25 @@ import org.junit.Test;
  */
 public class PostPasajeroTest {
 
+    // FIXME: este test falla, hay que arreglarlo, retorna http 400
     @Test
     public void testPostNuevoPasajero() throws IOException {
-        Pasajero pasajero8 = new Pasajero("pasajero8", "apellido8", 888888, new ArrayList());
-        ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(pasajero8);
-        ClientConfig config = new ClientConfig();
+
+        ClientConfig config = new ClientConfig().register(new JacksonFeature());
         Client client = ClientBuilder.newClient(config);
+
         WebTarget target = client.target("http://localhost:8080/pasajeros");
-        Response response = target.request().accept(MediaType.APPLICATION_JSON)
-                .post(Entity.entity(json, MediaType.APPLICATION_JSON), Response.class);
-        System.out.println(response.readEntity(String.class));
+        
+        Pasajero pasajero8 = new Pasajero("pasajero8", "apellido8", 888888, new ArrayList<Integer>());
+        pasajero8.setIdUser(8);
+        
+        Response response = target.request()
+                .post(Entity.entity(
+                        pasajero8,
+                        MediaType.APPLICATION_JSON));
+        Assert.assertEquals("hola", response.getEntity().toString());
         Assert.assertEquals(201, response.getStatus());
+
     }
 
 }

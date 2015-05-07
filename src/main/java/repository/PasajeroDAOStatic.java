@@ -29,11 +29,9 @@ public class PasajeroDAOStatic implements PasajeroDAO {
         Pasajero pasajero6 = new Pasajero("pasajero6", "apellido6", 666666, new ArrayList());
         Pasajero pasajero7 = new Pasajero("pasajero7", "apellido7", 777777, new ArrayList());
 
-        pasajero1.getAmigos().add(pasajero3);
-        pasajero1.getAmigos().add(pasajero5);
-        pasajero2.getAmigos().add(pasajero4);
-        pasajero2.getAmigos().add(pasajero6);
-        pasajero2.getAmigos().add(pasajero7);
+        pasajero1.agregarAmigo(pasajero3);
+        pasajero1.agregarAmigo(pasajero5);
+        pasajero2.agregarAmigosPorPasajeros(Arrays.asList(pasajero4, pasajero6, pasajero7));
 
         listaPasajeros = Arrays.asList(pasajero1, pasajero2, pasajero3, pasajero4,
                 pasajero5, pasajero6, pasajero7);
@@ -66,12 +64,26 @@ public class PasajeroDAOStatic implements PasajeroDAO {
 
     @Override
     public List<Pasajero> getAmigos(int id) {
-        for (Pasajero psj : getListaPasajeros()){
-            if (psj.getIdUser() == id){
+        List<Pasajero> amigos = new ArrayList();
+        for (Pasajero psj : getListaPasajeros()) {
+            if (psj.getIdUser() == id) {
+                for (Integer idPas : psj.getAmigos()) {
+                    amigos.add(getPasajeroById(idPas));
+                }
+                return amigos;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Integer> getIdsAmigos(int id) {
+        for (Pasajero psj : getListaPasajeros()) {
+            if (psj.getIdUser() == id) {
                 return psj.getAmigos();
             }
         }
         return null;
     }
-    
+
 }

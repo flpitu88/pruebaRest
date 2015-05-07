@@ -16,6 +16,7 @@ import apis.PasajerosAPI;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
 /**
@@ -38,6 +39,13 @@ public class PasajeroResource {
     public List<Pasajero> getPasajeros() {
         return pjSrv.getListado();
     }
+    
+    @GET
+    @Path("{userId}")
+    @Produces("application/json")
+    public Pasajero getPasajeroPorId(@PathParam("userId") String id){
+        return pjSrv.getPasajeroPorId(Integer.parseInt(id));
+    }
 
     /**
      * Probar mediante un test si esta bien este metodo. De alguna manera tiene
@@ -48,8 +56,6 @@ public class PasajeroResource {
      */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    @Transactional
     public Response guardarPasajero(Pasajero psj) {
         pjSrv.crearPasajero(psj);
         return Response.status(201)

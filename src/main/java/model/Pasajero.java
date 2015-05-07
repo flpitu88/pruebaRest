@@ -2,11 +2,13 @@ package model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Pasajero implements Serializable {
 
-    private static int contadorId = 0;
+    private static int contadorId = 1;
 
     @JsonProperty("nombre")
     private String nombre;
@@ -21,10 +23,10 @@ public class Pasajero implements Serializable {
     private int idUser;
 
     @JsonProperty("amigos")
-    private List<Pasajero> amigos;
+    private List<Integer> amigos;
 
     public Pasajero(String nombre, String apellido, long dni,
-            List<Pasajero> amigos) {
+            List<Integer> amigos) {
 
         this.nombre = nombre;
         this.apellido = apellido;
@@ -75,25 +77,44 @@ public class Pasajero implements Serializable {
         this.dni = dni;
     }
 
-    public List<Pasajero> getAmigos() {
+    public List<Integer> getAmigos() {
 
         return amigos;
     }
 
-    public void setAmigos(List<Pasajero> amigos) {
+    public void setAmigos(List<Integer> amigos) {
 
         this.amigos = amigos;
     }
 
     public boolean esAmigo(Pasajero pj) {
-
         boolean resul = false;
-        for (Pasajero p : getAmigos()) {
-            if (p.equals(pj)) {
+        for (Integer idAm : getAmigos()) {
+            if (idAm == pj.getIdUser()) {
                 resul = true;
             }
         }
         return resul;
+    }
+    
+    public void agregarAmigo(int idAmigo){
+        getAmigos().add(idAmigo);
+    }
+    
+    public void agregarAmigo(Pasajero p){
+        getAmigos().add(p.getIdUser());
+    }
+    
+    public void agregarAmigos(List<Integer> amigos){
+        getAmigos().addAll(amigos);
+    }
+    
+    public void agregarAmigosPorPasajeros(List<Pasajero> amigos){
+        List<Integer> listaIds = new ArrayList<>();
+        for (Pasajero p : amigos) {
+            listaIds.add(p.getIdUser());
+        }
+        agregarAmigos(listaIds);
     }
 
 }
