@@ -13,6 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import model.Pasajero;
 import apis.PasajerosAPI;
+import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.core.Response;
@@ -47,11 +48,13 @@ public class PasajeroResource {
      */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
     public Response guardarPasajero(Pasajero psj) {
-        String result = "Guardado: " + psj.getNombre()
-                + " " + psj.getApellido();
+        pjSrv.crearPasajero(psj);
         return Response.status(201)
-                .entity(result).build();
+                .entity("Creado nuevo pasajero " + psj.getIdUser())
+                .build();
     }
 
 }

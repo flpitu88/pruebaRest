@@ -1,24 +1,31 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Viaje {
+public class Viaje implements Serializable {
 
-    private Pasajero viajante;
+    @JsonProperty("idPasajero")
+    private int idViajante;
+
+    @JsonProperty("itinerario")
     private List<Trayecto> itinerario;
+
+    @JsonProperty("id")
     private int idViaje;
 
     public Viaje() {
     }
 
-    public Viaje(Pasajero viajante, List<Trayecto> itinerario) {
-        this.viajante = viajante;
+    public Viaje(int viajante, List<Trayecto> itinerario) {
+        this.idViajante = viajante;
         this.itinerario = itinerario;
     }
 
-    public Pasajero getViajante() {
-        return viajante;
+    public int getIdViajante() {
+        return idViajante;
     }
 
     public int getIdViaje() {
@@ -29,8 +36,8 @@ public class Viaje {
         this.idViaje = idViaje;
     }
 
-    public void setViajante(Pasajero viajante) {
-        this.viajante = viajante;
+    public void setViajante(int viajante) {
+        this.idViajante = viajante;
     }
 
     public List<Trayecto> getItinerario() {

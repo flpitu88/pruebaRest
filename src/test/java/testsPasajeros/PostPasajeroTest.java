@@ -5,14 +5,17 @@
  */
 package testsPasajeros;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import model.Pasajero;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.glassfish.jersey.client.ClientConfig;
-import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -20,25 +23,20 @@ import org.junit.Test;
  *
  * @author Flavio L. Pietrolati
  */
-public class PostPasajeroTest extends JerseyTest {
-
-//    @Override
-//    protected Application configure() {
-//        this.enable(TestProperties.LOG_TRAFFIC);
-//        this.enable(TestProperties.DUMP_ENTITY);
-//        return new ResourceConfig(PasajeroResource.class);
-//    }
+public class PostPasajeroTest {
 
     @Test
-    public void testPostNuevoPasajero() {
-        String payload = "\r\n{\r\n\"query\": \"google \",\r\n\"rows\": 50,\r\n\"return_docs\": true,\r\n\"is_facet\": true\r\n}"; //this is escapped json string in single line
+    public void testPostNuevoPasajero() throws IOException {
+        Pasajero pasajero8 = new Pasajero("pasajero8", "apellido8", 888888, new ArrayList());
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(pasajero8);
         ClientConfig config = new ClientConfig();
         Client client = ClientBuilder.newClient(config);
         WebTarget target = client.target("http://localhost:8080/pasajeros");
-        Response response = target.request().accept(MediaType.APPLICATION_JSON).post(Entity.entity(payload, MediaType.APPLICATION_JSON), Response.class);
-//                    processresponse(response); //This could be any method which processes your json response and gets you your desired data.
+        Response response = target.request().accept(MediaType.APPLICATION_JSON)
+                .post(Entity.entity(json, MediaType.APPLICATION_JSON), Response.class);
         System.out.println(response.readEntity(String.class));
-        Assert.assertTrue(true);
+        Assert.assertEquals(201, response.getStatus());
     }
 
 }

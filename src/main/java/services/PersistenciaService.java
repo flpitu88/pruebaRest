@@ -9,18 +9,27 @@ import java.util.List;
 import model.Pasajero;
 import org.springframework.stereotype.Service;
 import apis.PasajerosAPI;
+import apis.ViajesAPI;
+import model.Viaje;
 import org.springframework.beans.factory.annotation.Autowired;
 import repository.PasajeroDAO;
+import repository.ViajesDAO;
 
 /**
  *
  * @author Flavio L. Pietrolati
  */
 @Service
-public class PasajerosService implements PasajerosAPI {
+public class PersistenciaService implements PasajerosAPI, ViajesAPI {
 
     @Autowired
     private PasajeroDAO psjDao;
+    
+    @Autowired
+    private ViajesDAO viajeDao;
+
+    public PersistenciaService() {
+    }
     
     @Override
     public List<Pasajero> getListado() {
@@ -35,6 +44,16 @@ public class PasajerosService implements PasajerosAPI {
     @Override
     public List<Pasajero> getAmigosDePasajero(int idPsj) {
         return psjDao.getAmigos(idPsj);
+    }
+
+    @Override
+    public List<Viaje> getViajesDePasajero(int id) {
+        return viajeDao.getViajesDePasajero(id);
+    }
+
+    @Override
+    public void guardarViaje(Viaje v) {
+        viajeDao.guardarViaje(v);
     }
 
 }

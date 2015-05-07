@@ -6,7 +6,6 @@
 package repository;
 
 import java.util.List;
-import model.Pasajero;
 import model.Viaje;
 
 /**
@@ -19,7 +18,7 @@ public interface ViajesDAO {
     
     public Viaje buscarViajePorId(int id);
     
-    public List<Viaje> getViajesDeUsuario(Pasajero p);
+    public List<Viaje> getViajesDePasajero(int id);
     
 //    public void asignarRecomendacion(Recomendacion rec, Pasajero p);
     

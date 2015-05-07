@@ -5,9 +5,14 @@
  */
 package repository;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
-import model.Pasajero;
+import model.Aeropuerto;
+import model.Trayecto;
 import model.Viaje;
+import model.Vuelo;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -17,7 +22,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ViajesDAOStatic implements ViajesDAO {
 
-    private List<Viaje> listaViajes;
+    private final List<Viaje> listaViajes;
+
+    public ViajesDAOStatic() {
+        Trayecto tray1 = new Trayecto(new Aeropuerto("BUE", "Argentina", "Buenos Aires"),
+                new Aeropuerto("GRU", "Brasil", "Sao Paulo"),
+                new Vuelo("LAN", "L01", "Airbus", new Date(2015, 1, 2), new Date(2015, 1, 30)));
+        Viaje viaje1 = new Viaje(0, Arrays.asList(tray1));
+        listaViajes = Arrays.asList(viaje1);
+    }
 
     public List<Viaje> getListaViajes() {
         return listaViajes;
@@ -40,10 +53,10 @@ public class ViajesDAOStatic implements ViajesDAO {
     }
 
     @Override
-    public List<Viaje> getViajesDeUsuario(Pasajero p) {
-        List<Viaje> lista = null;
+    public List<Viaje> getViajesDePasajero(int id) {
+        List<Viaje> lista = new ArrayList<>();
         for (Viaje v : getListaViajes()) {
-            if (v.getViajante() == p) {
+            if (v.getIdViajante() == id) {
                 lista.add(v);
             }
         }

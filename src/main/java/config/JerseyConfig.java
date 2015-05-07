@@ -13,6 +13,7 @@ import resources.AmigosResource;
 import resources.CiudadesResource;
 import resources.OpcionDeViajeResource;
 import resources.PasajeroResource;
+import resources.ViajesResource;
 
 public class JerseyConfig extends ResourceConfig {
 
@@ -27,5 +28,6 @@ public class JerseyConfig extends ResourceConfig {
         register(AmigosResource.class);
         register(OpcionDeViajeResource.class);
         register(CiudadesResource.class);
+        register(ViajesResource.class);
     }
 }
