@@ -34,6 +34,7 @@ public class ApplicationConfig extends Application {
         resources.add(resources.CiudadesResource.class);
         resources.add(resources.Greetings.class);
         resources.add(resources.OpcionDeViajeResource.class);
+        resources.add(resources.PasajeroResource.class);
         resources.add(resources.ViajesResource.class);
     }
     
