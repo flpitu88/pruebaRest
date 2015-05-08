@@ -21,9 +21,7 @@ public class RecomendacionesDAOStatic implements RecomendacionesDAO {
     private final List<Recomendacion> listaRecomendaciones;
 
     public RecomendacionesDAOStatic() {
-        listaRecomendaciones = new ArrayList<>();
-        listaRecomendaciones.add((Recomendacion) Arrays.asList(
-                new Recomendacion(1, "Buenos Aires", "Roma")));
+        listaRecomendaciones = Arrays.asList( new Recomendacion(1, "Buenos Aires", "Roma"));
     }
 
     public List<Recomendacion> getListaRecomendaciones() {
@@ -41,6 +39,16 @@ public class RecomendacionesDAOStatic implements RecomendacionesDAO {
             }
         }
         return recomend;
+    }
+
+    @Override
+    public Recomendacion getRecomendacionPorId(Integer id) {
+        for (Recomendacion r : getListaRecomendaciones()){
+            if (r.getIdRecomendacion() == id){
+                return r;
+            }
+        }
+        return null;
     }
 
 }

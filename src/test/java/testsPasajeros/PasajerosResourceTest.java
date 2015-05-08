@@ -17,6 +17,7 @@ import model.Pasajero;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -25,6 +26,7 @@ import org.junit.Test;
  */
 public class PasajerosResourceTest {
 
+    @Ignore
     @Test
     public void testGetListaDePasajeros() {
         ClientConfig config = new ClientConfig().register(new JacksonFeature());
@@ -39,6 +41,7 @@ public class PasajerosResourceTest {
         Assert.assertTrue(response.getStatusInfo().getStatusCode() == 200);
     }
 
+    @Ignore
     @Test
     public void testGetPasajero() {
         ClientConfig config = new ClientConfig().register(new JacksonFeature());

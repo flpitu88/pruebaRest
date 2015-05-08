@@ -27,9 +27,9 @@ public class JerseyConfig extends ResourceConfig {
         register(Greetings.class);
         register(PasajeroResource.class);
         register(AmigosResource.class);
-        register(OpcionDeViajeResource.class);
         register(CiudadesResource.class);
         register(ViajesResource.class);
         register(RecomendacionesResource.class);
+        register(OpcionDeViajeResource.class);
     }
 }

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import model.Pasajero;
-import model.Recomendacion;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -31,6 +30,7 @@ public class PasajeroDAOStatic implements PasajeroDAO {
         Pasajero pasajero7 = new Pasajero("pasajero7", "apellido7", 777777, new ArrayList());
 
         pasajero1.agregarAmigo(pasajero3);
+        pasajero1.setRecomendaciones(Arrays.asList(1));
         pasajero1.agregarAmigo(pasajero5);
         pasajero2.agregarAmigosPorPasajeros(Arrays.asList(pasajero4, pasajero6, pasajero7));
 

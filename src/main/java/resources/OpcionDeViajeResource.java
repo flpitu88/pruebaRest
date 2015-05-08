@@ -9,8 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import apis.OpcionViajeAPI;
-import com.google.appengine.repackaged.org.joda.time.format.DateTimeFormat;
-import com.google.appengine.repackaged.org.joda.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -21,7 +20,7 @@ import model.OpcionDeViaje;
  *
  * @author flavio
  */
-@Path("/opcionDeViaje")
+@Path("/opciondeviaje")
 @Produces(MediaType.APPLICATION_JSON)
 public class OpcionDeViajeResource {
 
@@ -33,23 +32,21 @@ public class OpcionDeViajeResource {
     }
 
     @GET
-    public List<OpcionDeViaje> findOpcionesDeViaje(
+    @Produces("application/json")
+    public List<OpcionDeViaje> consultaOpcionesDeViaje(
             @QueryParam("aeroOrigen") String aeroOrigen, // iata code refactor
             @QueryParam("aeroDestino") String aeroDestino, // iata code refactor
             @QueryParam("fechaIda") String fechaIda, // refactor a date time
             @QueryParam("fechaVuelta") String fechaVuelta // refactor a datetime
     ) {
-
-        // tener en cuenta el formato en la UI por el momento
-        DateTimeFormatter fmt = DateTimeFormat
-                .forPattern("dd/MM/yyyy");
-
+        
         return this.srvOpcViajes
                 .findOpcionesDeViaje(
                         aeroOrigen,
                         aeroDestino,
-                        fmt.parseDateTime(fechaIda),
-                        fmt.parseDateTime(fechaVuelta));
+                        fechaIda,
+                        fechaVuelta);
 
     }
+
 }

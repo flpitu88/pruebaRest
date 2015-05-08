@@ -16,4 +16,6 @@ public interface RecomendacionesDAO {
     
     public List<Recomendacion> getRecomendacionesPorId(List<Integer> recomendaciones);
     
+    public Recomendacion getRecomendacionPorId(Integer id);
+    
 }

@@ -88,7 +88,8 @@
         <dependency>
             <groupId>com.google.appengine</groupId>
             <artifactId>appengine-api-1.0-sdk</artifactId>
-            <version>1.9.4</version>
+            <version>1.9.19</version>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -270,10 +271,10 @@
                     <port>8080</port -->
                     <!-- Comment in the below snippet to enable local debugging with a remove debugger
                     like those included with Eclipse or IntelliJ -->
-                    <jvmFlags>
+<!--                    <jvmFlags>
                         <jvmFlag>-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n</jvmFlag>
                         <jvmFlag>-Xdebug</jvmFlag>
-                    </jvmFlags>
+                    </jvmFlags>-->
                 </configuration>
             </plugin>
             <plugin>

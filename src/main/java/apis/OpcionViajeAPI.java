@@ -19,6 +19,6 @@ public interface OpcionViajeAPI {
     public List<OpcionDeViaje> findOpcionesDeViaje(
             String aeroOrigen,
             String aeroDestino,
-            DateTime fechaIda,
-            DateTime fechaVuelta);
+            String fechaIda,
+            String fechaVuelta);
 }
