@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import model.Pasajero;
+import model.Recomendacion;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -81,6 +82,16 @@ public class PasajeroDAOStatic implements PasajeroDAO {
         for (Pasajero psj : getListaPasajeros()) {
             if (psj.getIdUser() == id) {
                 return psj.getAmigos();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<Integer> getRecomendacionesDeUsuario(int pas) {
+         for (Pasajero psj : getListaPasajeros()) {
+            if (psj.getIdUser() == pas) {
+                return psj.getRecomendaciones();
             }
         }
         return null;

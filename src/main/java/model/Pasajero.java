@@ -3,7 +3,6 @@ package model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Pasajero implements Serializable {
@@ -24,6 +23,17 @@ public class Pasajero implements Serializable {
 
     @JsonProperty("amigos")
     private List<Integer> amigos;
+    
+    @JsonProperty("recomendaciones")
+    private List<Integer> recomendaciones;
+
+    public List<Integer> getRecomendaciones() {
+        return recomendaciones;
+    }
+
+    public void setRecomendaciones(List<Integer> recomendaciones) {
+        this.recomendaciones = recomendaciones;
+    }
 
     public Pasajero(String nombre, String apellido, long dni,
             List<Integer> amigos) {
@@ -32,6 +42,7 @@ public class Pasajero implements Serializable {
         this.apellido = apellido;
         this.dni = dni;
         this.amigos = amigos;
+        this.recomendaciones = new ArrayList<>();
         this.idUser = contadorId++;
     }
 

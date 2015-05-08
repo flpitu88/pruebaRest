@@ -7,6 +7,7 @@ package repository;
 
 import java.util.List;
 import model.Pasajero;
+import model.Recomendacion;
 
 /**
  *
@@ -24,6 +25,6 @@ public interface PasajeroDAO {
     
     public List<Integer> getIdsAmigos(int id);
     
-//    public List<Recomendacion> getRecomendacionesDeUsuario(Pasajero p);
+    public List<Integer> getRecomendacionesDeUsuario(int pas);
     
 }

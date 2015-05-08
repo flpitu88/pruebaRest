@@ -14,11 +14,9 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import model.Pasajero;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -28,6 +26,7 @@ import org.junit.Test;
 public class PostPasajeroTest {
 
     // FIXME: este test falla, hay que arreglarlo, retorna http 400
+    // Desde Curl: curl localhost:9000/sync -H "Content-type:application/json" -X POST -d @json.txt
     @Test
     public void testPostNuevoPasajero() throws IOException {
 
@@ -42,8 +41,8 @@ public class PostPasajeroTest {
         Response response = target.request()
                 .post(Entity.entity(
                         pasajero8,
-                        MediaType.APPLICATION_JSON));
-        Assert.assertEquals("hola", response.getEntity().toString());
+                        MediaType.APPLICATION_JSON_TYPE));
+//        Assert.assertEquals("hola", response.getEntity().toString());
         Assert.assertEquals(201, response.getStatus());
 
     }
